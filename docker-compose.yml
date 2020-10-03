@@ -9,58 +9,46 @@ services:
     deploy: 
       restart_policy:
         condition: on-failure
-    networks:
-      dockernet:
-        ipv4_address: 172.32.0.10
     ports:
-        - "15672:15672"
-        - "5672:5672"
+      - "15672:15672"
+      - "5672:5672"
   vidextrator:
     image: imagevideoextrator
     build:
       context: .
       dockerfile: vidextraction.Dockerfile
     volumes:
-        - type: bind
-          source: /vagrant/Audios
-          target: /vidExtrator/Audios
+      - type: bind
+        source: ./vagrant/Audios
+        target: /vidExtrator/Audios
     restart: on-failure
     depends_on:
       - rabbit
-    networks:
-        - dockernet
   featextraction:
     image: mtgupf/essentia
     build:
       context: .
       dockerfile: featuresextraction.Dockerfile
     volumes:
-        - type: bind
-          source: /vagrant/Audios
-          target: /Audios
+      - type: bind
+        source: ./vagrant/Audios
+        target: /Audios
     restart: on-failure
     depends_on:
       - rabbit
-    networks:
-        - dockernet
   musicclass:
     image: python
     build:
       context: .
       dockerfile: classifymusic.Dockerfile
     restart: on-failure 
-    networks:
-        - dockernet
     volumes:
       - type: bind
-        source: /vagrant/MusicClassification/classification.txt
+        source: ./vagrant/MusicClassification/classification.txt
         target: /classification.txt
+    depends_on:
+      - rabbit
 
-        
 volumes:
   audios:
   classifications:
-
-networks:
-    dockernet:
-        external: true

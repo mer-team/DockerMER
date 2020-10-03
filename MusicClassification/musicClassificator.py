@@ -3,7 +3,7 @@ import requests
 import pika
 from joblib import dump, load
 credentials =  pika.PlainCredentials('merUser', 'passwordMER')
-connection = pika.BlockingConnection(pika.ConnectionParameters('172.32.0.10', 5672,'/',credentials))
+connection = pika.BlockingConnection(pika.ConnectionParameters('rabbit', 5672,'/',credentials))
 
 channel = connection.channel()
 channel.queue_declare(queue='classifyMusic')
