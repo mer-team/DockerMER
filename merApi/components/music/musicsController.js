@@ -53,7 +53,7 @@ exports.uploadVideo = async (req, res) => {
 
 
 
-            /*amqp.connect('amqp://merUser:passwordMER@194.210.240.63', function (err, conn) {
+            amqp.connect('amqp://merUser:passwordMER@rabbit', function (err, conn) {
                 conn.createChannel(function (err, ch) {
                     var q = 'musicExtraction';
                     //console.log("Conn = " + conn);
@@ -64,7 +64,7 @@ exports.uploadVideo = async (req, res) => {
                     console.log(" [x] Sent '%s'", url);
                 });
                 setTimeout(function () { conn.close(); process.exit(0) }, 500);
-            });*/
+            });
 
             serverResponse = { status: "Upload", response: {} }
             return res.send(serverResponse);
