@@ -59,8 +59,8 @@ services:
       MYSQL_DATABASE: mer
 #    volumes:
 #      - ./db.sql:/docker-entrypoint-initdb.d/dump.sql
-#    ports:
-#      - "3306:3306"
+    ports:
+      - "3306:3306"
 
   api:
     build:
@@ -79,6 +79,15 @@ services:
       - api
     ports:
       - "3000:3000"
+
+  proxy:
+    build:
+      context: .
+      dockerfile: proxy.Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "8001:8000"
 
 volumes:
   audios:

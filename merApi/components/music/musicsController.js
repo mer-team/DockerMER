@@ -63,7 +63,7 @@ exports.uploadVideo = async (req, res) => {
                     ch.sendToQueue(q, new Buffer(url), { persistent: false });
                     console.log(" [x] Sent '%s'", url);
                 });
-                setTimeout(function () { conn.close(); process.exit(0) }, 500);
+                setTimeout(function () { conn.close(); /*process.exit(0)*/ }, 500);
             });
 
             serverResponse = { status: "Upload", response: {} }

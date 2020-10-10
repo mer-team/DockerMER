@@ -32,7 +32,7 @@ def callback(ch, method, properties, body):
         emotion = "Calma"
 
     PARAMS = {'idVideo': name, 'emocao': emotion}
-    requests.get("http://api:8000/", params=PARAMS )
+    requests.get("http://proxy:8000/", params=PARAMS )
     print(' [*] Waiting for messages. To exit press CTRL+C')
 
 
