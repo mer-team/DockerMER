@@ -6,7 +6,7 @@ const port = 8000
 app.get('/', (req, res, next) => {
     console.log("HIT")
     //do windows IP
-   fetch("http://192.168.8.104:8000/music/update",{
+   fetch("http://api:8000/music/update",{
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

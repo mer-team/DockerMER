@@ -9,58 +9,86 @@ services:
     deploy: 
       restart_policy:
         condition: on-failure
-    networks:
-      dockernet:
-        ipv4_address: 172.32.0.10
     ports:
-        - "15672:15672"
-        - "5672:5672"
+      - "15672:15672"
+      - "5672:5672"
+
   vidextrator:
     image: imagevideoextrator
     build:
       context: .
       dockerfile: vidextraction.Dockerfile
     volumes:
-        - type: bind
-          source: /vagrant/Audios
-          target: /vidExtrator/Audios
+      - type: bind
+        source: ./vagrant/Audios
+        target: /vidExtrator/Audios
     restart: on-failure
     depends_on:
       - rabbit
-    networks:
-        - dockernet
+
   featextraction:
     image: mtgupf/essentia
     build:
       context: .
       dockerfile: featuresextraction.Dockerfile
     volumes:
-        - type: bind
-          source: /vagrant/Audios
-          target: /Audios
+      - type: bind
+        source: ./vagrant/Audios
+        target: /Audios
     restart: on-failure
     depends_on:
       - rabbit
-    networks:
-        - dockernet
+
   musicclass:
     image: python
     build:
       context: .
       dockerfile: classifymusic.Dockerfile
     restart: on-failure 
-    networks:
-        - dockernet
     volumes:
       - type: bind
-        source: /vagrant/MusicClassification/classification.txt
+        source: ./vagrant/MusicClassification/classification.txt
         target: /classification.txt
+    depends_on:
+      - rabbit
+    
+  db:
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: teste
+      MYSQL_DATABASE: mer
+#    volumes:
+#      - ./db.sql:/docker-entrypoint-initdb.d/dump.sql
+    ports:
+      - "3306:3306"
 
-        
+  api:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
+  proxy:
+    build:
+      context: .
+      dockerfile: proxy.Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "8001:8000"
+
 volumes:
   audios:
   classifications:
-
-networks:
-    dockernet:
-        external: true

@@ -3,7 +3,7 @@ import requests
 import pika
 from joblib import dump, load
 credentials =  pika.PlainCredentials('merUser', 'passwordMER')
-connection = pika.BlockingConnection(pika.ConnectionParameters('172.32.0.10', 5672,'/',credentials))
+connection = pika.BlockingConnection(pika.ConnectionParameters('rabbit', 5672,'/',credentials))
 
 channel = connection.channel()
 channel.queue_declare(queue='classifyMusic')
@@ -32,7 +32,7 @@ def callback(ch, method, properties, body):
         emotion = "Calma"
 
     PARAMS = {'idVideo': name, 'emocao': emotion}
-    requests.get("http://172.32.0.1:8000/", params=PARAMS )
+    requests.get("http://proxy:8000/", params=PARAMS )
     print(' [*] Waiting for messages. To exit press CTRL+C')
 
 

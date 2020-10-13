@@ -1,0 +1,50 @@
+
+
+::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+#frame {
+  width: 500px;
+  height: 350px;
+  padding: 15px 15px 15px 15px;
+  border: 0;
+}
+
+
+#likes{
+  font-size:16px;
+}
+
+#users{
+  color: black;
+}
+.imagemMER{
+  width: 98px;
+  height: 220px;
+
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.procura{
+  vertical-align: middle;
+}
+
+.containerPesquisa{
+  color:white;
+}
+
+.musicaPesquisa{
+  color:black;
+}
+
+
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
