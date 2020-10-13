@@ -80,15 +80,6 @@ services:
     ports:
       - "3000:3000"
 
-  proxy:
-    build:
-      context: .
-      dockerfile: proxy.Dockerfile
-    depends_on:
-      - api
-    ports:
-      - "8001:8000"
-
 volumes:
   audios:
   classifications:
