@@ -50,7 +50,7 @@ class Header extends Component {
             nome,
             isAdmin
         }
-        const response = await fetch(`http://${process.env.URL_API}/token/refresh`, {
+        const response = await fetch(`http://${process.env.REACT_APP_URL_API}/token/refresh`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -180,7 +180,7 @@ class Header extends Component {
                                                     <span className="nav-link"> | </span>
                                                 </li>
                                                 <li className="nav-item active">
-                                                    <a className="nav-link" href="http://%REACT_APP_URL_API%/api/doc">Documentação da API <span className="sr-only">(current)</span></a>
+                                                    <a className="nav-link" href={ `http://${process.env.REACT_APP_URL_API}/api/doc` }>Documentação da API <span className="sr-only">(current)</span></a>
                                                 </li>
                                                 <li className="nav-item active">
                                                     <span className="nav-link"> | </span>
