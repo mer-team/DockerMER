@@ -42,7 +42,7 @@ class Index extends Component {
           userID,
           isAdmin
         }
-        const response = await fetch('http://localhost:8000/token/refresh', {
+        const response = await fetch(`http://${process.env.REACT_APP_URL_API}/token/refresh`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ class Index extends Component {
     
 
     async getUsers() {
-        const response = await fetch(`http://localhost:8000/user`, {
+        const response = await fetch(`http://${process.env.REACT_APP_URL_API}/user`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

@@ -38,7 +38,7 @@ class Index extends Component {
   }
 
   async getMusicFK(idVideo) {
-    const response = await fetch(`http://localhost:8000/music/${idVideo}`, {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/music/${idVideo}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ class Index extends Component {
     var dados = {
       userFK: decoded.userID
     }
-    const response = await fetch('http://localhost:8000/list/user', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/list/user`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ class Index extends Component {
       listaFK: listaFK,
       musicFK: musicFK
     }
-    const response = await fetch(`http://localhost:8000/listmusic/add`, {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/listmusic/add`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -163,7 +163,7 @@ class Index extends Component {
         musicFK: this.state.dataGet[j].id
       };
       //verificar se já foi feito um feedback à musica pelo utilizador em questão
-      const response = await fetch(`http://localhost:8000/feedback/list`, {
+      const response = await fetch(`http://${process.env.REACT_APP_URL_API}/feedback/list`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -212,7 +212,7 @@ class Index extends Component {
   }
 
   async getLastVideos() {
-    const response = await fetch('http://localhost:8000/music', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/music`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -272,7 +272,7 @@ class Index extends Component {
       var filterEscolhido = document.getElementById("filter" + emocao);
       filterEscolhido.className = "btn active"
 
-      const response = await fetch(`http://localhost:8000/music/emocao/${emocao}`, {
+      const response = await fetch(`http://${process.env.REACT_APP_URL_API}/music/emocao/${emocao}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -329,7 +329,7 @@ class Index extends Component {
       isAdmin,
       userID
     }
-    const response = await fetch('http://localhost:8000/token/refresh', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/token/refresh`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -371,7 +371,7 @@ class Index extends Component {
       urlInput: urlInput,
       userFK: userFK
     };
-    const response = await fetch('http://localhost:8000/music/upload', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/music/upload`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -439,7 +439,7 @@ class Index extends Component {
 
   eliminarMusica = async e => {
     const id = e.target.id;
-    const response = await fetch(`http://localhost:8000/music/${id}/delete`, {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/music/${id}/delete`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -483,7 +483,7 @@ class Index extends Component {
   }
 
   async createFeedBack(createFeed, idVideo) {
-    const response = await fetch(`http://localhost:8000/feedback/new`, {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/feedback/new`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -516,7 +516,7 @@ class Index extends Component {
 
 
   async atualizaFeedBack(editFeed, idFeed, idVideo) {
-    const response = await fetch(`http://localhost:8000/feedback/${idFeed}/edit`, {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/feedback/${idFeed}/edit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -557,7 +557,7 @@ class Index extends Component {
       musicFK: id
     };
     //verificar se já foi feito um feedback à musica pelo utilizador em questão
-    const response = await fetch(`http://localhost:8000/feedback/list`, {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/feedback/list`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

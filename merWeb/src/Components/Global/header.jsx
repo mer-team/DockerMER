@@ -50,7 +50,7 @@ class Header extends Component {
             nome,
             isAdmin
         }
-        const response = await fetch('http://localhost:8000/token/refresh', {
+        const response = await fetch(`http://${process.env.URL_API}/token/refresh`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ class Header extends Component {
 
         const pesquisaMusica = document.getElementById('searchMusicas').value;
 
-        const response = await fetch(`http://localhost:8000/music/search/${pesquisaMusica}`, {
+        const response = await fetch(`http://${process.env.REACT_APP_URL_API}/music/search/${pesquisaMusica}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ class Header extends Component {
         const pesquisaMusica = document.getElementById('searchMusicas').value;
         window.location = "/music/pesquisa/" + pesquisaMusica
 
-        // const response = await fetch(`http://http://localhost:8000/music/search/${pesquisaMusica}`, {
+        // const response = await fetch(`http://localhost:8000/music/search/${pesquisaMusica}`, {
         //     method: 'GET',
         //     headers: {
         //         'Content-Type': 'application/json',
@@ -180,7 +180,7 @@ class Header extends Component {
                                                     <span className="nav-link"> | </span>
                                                 </li>
                                                 <li className="nav-item active">
-                                                    <a className="nav-link" href="http://localhost:8000/api/doc">Documentação da API <span className="sr-only">(current)</span></a>
+                                                    <a className="nav-link" href="http://%REACT_APP_URL_API%/api/doc">Documentação da API <span className="sr-only">(current)</span></a>
                                                 </li>
                                                 <li className="nav-item active">
                                                     <span className="nav-link"> | </span>
