@@ -67,7 +67,7 @@ class Perfil extends Component {
     const dados = {
       listaFK: listaFK
     }
-    const response = await fetch('http://localhost:8000/listmusic/get', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/listmusic/get`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ class Perfil extends Component {
       listaFK: listaFK,
       musicFK: musicFK
     }
-    const response = await fetch('http://localhost:8000/listmusic/delete', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/listmusic/delete`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -146,7 +146,7 @@ class Perfil extends Component {
       nomeLista: nomeLista
     }
 
-    const response = await fetch('http://localhost:8000/list/create', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/list/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -186,7 +186,7 @@ class Perfil extends Component {
 
   async apagaLista(listaID) {
 
-    const response = await fetch(`http://localhost:8000/list/${listaID}/delete`, {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/list/${listaID}/delete`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -228,7 +228,7 @@ class Perfil extends Component {
     var dados = {
       userFK: decoded.userID
     }
-    const response = await fetch('http://localhost:8000/list/user', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/list/user`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -262,7 +262,7 @@ class Perfil extends Component {
     var dados = {
       userFK: userFK
     }
-    const response = await fetch('http://localhost:8000/music/user', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/music/user`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -297,7 +297,7 @@ class Perfil extends Component {
       userID,
       isAdmin
     }
-    const response = await fetch('http://localhost:8000/token/refresh', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/token/refresh`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -331,7 +331,7 @@ class Perfil extends Component {
       userID,
       isAdmin
     }
-    const response = await fetch('http://localhost:8000/token/refresh', {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/token/refresh`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -354,7 +354,7 @@ class Perfil extends Component {
     });
   }
   getDetails = async (username) => {
-    const response = await fetch(`http://localhost:8000/user/${username}`, {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/user/${username}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -402,7 +402,7 @@ class Perfil extends Component {
 
       const password = document.getElementById('pass').value;
       const dados = { /*'nome': nome, 'email': email, 'username': username, */'hashPassword': password }
-      const response = await fetch(`http://localhost:8000/user/${usernameURL}/edit`, {
+      const response = await fetch(`http://${process.env.REACT_APP_URL_API}/user/${usernameURL}/edit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -457,7 +457,7 @@ class Perfil extends Component {
     }
     //Verifica se não foi preenchido algum campo
 
-    const response = await fetch(`http://localhost:8000/user/${usernameURL}/edit`, {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/user/${usernameURL}/edit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

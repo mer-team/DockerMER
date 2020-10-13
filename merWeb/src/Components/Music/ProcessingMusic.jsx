@@ -19,7 +19,7 @@ class ProcessingMusic extends Component {
     this.musicasEmProcessamento();
   }
   async musicasEmProcessamento() {
-    const response = await fetch(`http://localhost:8000/music/processing/get`, {
+    const response = await fetch(`http://${process.env.REACT_APP_URL_API}/music/processing/get`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
