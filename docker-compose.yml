@@ -57,8 +57,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: teste
       MYSQL_DATABASE: mer
-#    volumes:
-#      - ./db.sql:/docker-entrypoint-initdb.d/dump.sql
+    volumes:
+      - ./db.sql:/docker-entrypoint-initdb.d/mer.sql
     ports:
       - "3306:3306"
 
