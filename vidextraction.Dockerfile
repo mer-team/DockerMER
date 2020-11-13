@@ -6,4 +6,8 @@ WORKDIR /vidExtrator
 
 RUN npm install
 
-CMD ["node","vidExtractorScript"]
+COPY ./wait-for-it.sh /
+RUN chmod +x /wait-for-it.sh
+
+#CMD ["node","vidExtractorScript"]
+CMD /wait-for-it.sh rabbit:5672 -- node vidExtractorScript

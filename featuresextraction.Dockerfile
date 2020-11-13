@@ -4,4 +4,8 @@ ADD /FeaturesExtraction/featuresExtraction.py /
 
 RUN pip install essentia pika
 
-CMD ["python", "./featuresExtraction.py"]
+COPY ./wait-for-it.sh /
+RUN chmod +x ./wait-for-it.sh
+
+#CMD ["python", "./featuresExtraction.py"]
+CMD ./wait-for-it.sh rabbit:5672 -- python ./featuresExtraction.py
