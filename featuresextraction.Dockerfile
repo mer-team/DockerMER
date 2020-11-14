@@ -1,11 +1,13 @@
-FROM python:2.7
+#FROM python:2.7
+FROM mtgupf/essentia:latest
+
+RUN apt-get install curl
 
 ADD /FeaturesExtraction/featuresExtraction.py /
 
 RUN pip install essentia pika
 
-COPY ./wait-for-it.sh /
-RUN chmod +x ./wait-for-it.sh
+COPY ./wait-for-rabbit.sh /
+RUN chmod +x ./wait-for-rabbit.sh
 
-#CMD ["python", "./featuresExtraction.py"]
-CMD ./wait-for-it.sh rabbit:5672 -- python ./featuresExtraction.py
+CMD ["/wait-for-rabbit.sh", "python", "featuresExtraction.py"]
