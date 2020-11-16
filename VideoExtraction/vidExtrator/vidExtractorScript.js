@@ -11,12 +11,12 @@ validURL = async (url) => {
     var result;
     try{
         result = await ytdl.getBasicInfo(url)
-        if(result.media.category!="Music"){
+        if(result.videoDetails.media.category!="Music"){
             console.log("Not a music")
             return ;
         }
     }catch(err){
-        console.log("Not a valid ID")
+        console.log("Not a valid ID, err: "+err)
         return 
     }
     return ytdl.validateURL(url);

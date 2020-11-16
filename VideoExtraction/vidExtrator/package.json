@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "amqplib": "^0.5.5",
-    "ytdl-core": "3.3.0"
+    "ytdl-core": "4.0.4"
   }
 }
-
